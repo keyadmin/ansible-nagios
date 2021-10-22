@@ -1,0 +1,17 @@
+user: nagios #NAGIOS_USER
+nagcmd_group: nagioscmd #IOS_GROUP
+vm_user: root #VM_USER
+vm_ip: ::1 #VM_PUBLIC_IP,your_nagios_server_private_ip
+nagios_group: nagios #nagios group
+nagios_version: nagioscore-nagios-4.4.4 #NAGIOS_VERSION
+nagios_dwld_url: https://github.com/NagiosEnterprises/nagioscore/archive/nagios-4.4.4.tar.gz #NAGIOS_DOWNLOAD_URL
+plugin_version: nagios-plugins-2.2.1 #NAGIOS_PLUGINS_VERSION
+plugin_dwld_url: https://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz #NAGIOS_PLUGINS_URL
+nrpe_version: nrpe-3.2.1 #NRPE_VERSION
+nrpe_dwld_url: https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-3.2.1/nrpe-3.2.1.tar.gz #NRPE_DOWNLOAD_URL
+user_email: ksysad@vccorp.com #YOUR_EMAIL
+username: nagiosadmin #ADMIN_USERNAME
+password: admin #ADMIN_PASSWORD
+remote_host_name: srv1 #REMOTE_VM_NAME
+remote_host_ip: 127.0.0.1 #REMOTE_VM_IP
+alias: Nagios Admin #REMOTE_VM_ALIAS

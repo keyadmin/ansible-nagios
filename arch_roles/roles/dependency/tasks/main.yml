@@ -1,0 +1,60 @@
+---
+#### This task file creates a user, two groups, updates apt cache and installs build dependencies
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: Create nagcmd and nagios Groups
+  group: name="{{ item }}" state=present
+  with_items:
+    - "{{ nagcmd_group }}"
+    - "{{ nagios_group }}"
+  tags:
+    - group
+
+- name: Create nagios User and add to nagcmd Group
+  user: name={{ user }} group={{ nagcmd_group }}
+  tags:
+    - group
+
+# - name: Check if build dependencies are installed
+#   command: bash -c "dpkg --get-selections | grep {{ item }}"
+#   with_items:
+#     - build-essential
+#     - apache2
+#     - autoconf
+#     - build-essential
+#     - dc
+#     - gcc
+#     - gettext
+#     - libgd-dev
+#     - libnet-snmp-perl
+#     - libmcrypt-dev
+#     - libssl-dev
+#     - make
+#     - snmp
+#     - unzip
+#   ignore_errors: true
+#   register: build_dependencies_installed
+#   tags:
+#     - build_setup
+
+- name: Update repo cache and install build dependencies
+  apt: name={{ item }} state=latest force=yes
+  with_items:
+    - build-essential
+    - apache2
+    - autoconf
+    - build-essential
+    - dc
+    - gcc
+    - gettext
+    - libgd-dev
+    - libnet-snmp-perl
+    - libmcrypt-dev
+    - libssl-dev
+    - make
+    - snmp
+    - unzip
+  # when: build_dependencies_installed|failed
+  # tags:
+  #   - build_setup
